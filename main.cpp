@@ -2,7 +2,8 @@
 #include "point.hpp"
 #include "shapes.hpp"
 #include <vector>
-
+#include <iostream>
+#include <cassert>
 
 int main() {
 	
