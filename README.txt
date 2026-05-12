@@ -1,0 +1,14 @@
+
+Batice KAYSSAN, Romain MARTI, Alicia RATSIMBAZAFY, Yacine SERI
+
+--------------------------------------------------
+Compilation:
+--------------------------------------------------
+
+g++ -std=c++23 -Iinclude -o main src/*.cpp src/shapes/*.cpp main.cpp -lgdi32 -luser32
+
+
+--------------------------------------------------
+Consignes:
+--------------------------------------------------
+
