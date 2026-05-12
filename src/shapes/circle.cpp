@@ -8,3 +8,7 @@ Circle::Circle(double r, Point c) : radius(r), center(c) {};
 double Circle::circumference() {
 	return 2*radius*pi;
 }
+
+double Circle::area() {
+	return pi*radius*radius;
+}
