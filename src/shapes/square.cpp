@@ -60,13 +60,49 @@ draw_picture(sommets);
 }
 // git add puis git commit a chaque fonction
 
+//Translation (on rajoute les coordonnes d'un point de translation)
 void Square::translate(Point T){
-	
+    A.x += T.x;
+    A.y += T.y;
+    C.x += T.x;
+    C.y += T.y;
 }
 
+//Fonction resize
+void Square::resize(double ratio) {
+    //Trouver le centre (il ne doit pas bouger)
+    Point centre = center();
+
+    //Déplacer le point A par rapport au centre
+    A.x = centre.x + (A.x - centre.x) * ratio;
+    A.y = centre.y + (A.y - centre.y) * ratio;
+
+    // ÉTAPE 3 : Déplacer le point 'c' par rapport au centre
+    C.x = centre.x + (C.x - centre.x) * ratio;
+    C.y = centre.y + (C.y - centre.y) * ratio;
+}
 	
-	
-	
+void Square::rotate(double angle) {
+Point centre =center();
+
+// On pré-calcule le cosinus et le sinus de l'angle pour gagner du temps
+double cosA =cos(angle);
+double sinA =sin(angle);
+
+// On calcule l'écart par rapport au centre
+double dx_a = A.x - centre.x;
+double dy_a = A.y - centre.y;
+
+// Formule mathématique de la rotation 2D
+A.x = centre.x + (dx_a * cosA - dy_a * sinA);
+A.y = centre.y + (dx_a * sinA + dy_a * cosA);
+
+double dx_c = C.x - centre.x;
+double dy_c = C.y - centre.y;
+
+C.x = centre.x + (dx_c * cosA - dy_c * sinA);
+C.y = centre.y + (dx_c * sinA + dy_c * cosA);
+}
 
 	
 	
