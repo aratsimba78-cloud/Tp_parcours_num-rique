@@ -1,4 +1,5 @@
 #include "point.hpp"
+#include "draw.hpp"
 #include "shapes/triangle.hpp"
 #include <cmath>
 
