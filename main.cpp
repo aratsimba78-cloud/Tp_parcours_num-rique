@@ -81,6 +81,36 @@ int main() {
 	std::cout << "La fonction equals() est OK" << std::endl;
 
 
+	// TEST SIMPLE DES FONCTIONS VOID DE SQUARE
+	Square sq(A, B);
+
+	std::cout << "- Etat initial -" << std::endl;
+	std::cout << "A: (" << sq.A.x << "," << sq.A.y << "), " << "C: (" << sq.C.x << "," << sq.C.y << ")" << std::endl;
+
+	//Translate
+	sq.translate(Point(2,3));
+	std::cout << "Après translate(2,3) : " << "A: (" << sq.A.x << "," << sq.A.y << "), " << "C: (" << sq.C.x << "," << sq.C.y << ")" << std::endl;
+
+	// Resize
+	sq.resize(2.0);
+	std::cout << "Après resize(2.0) : "<< "A: (" << sq.A.x << "," << sq.A.y << "), " << "C: (" << sq.C.x << "," << sq.C.y << ")" << std::endl;
+
+	// Rotate
+	sq.rotate(90); // rotation 90° autour du centre
+	std::cout << "Après rotate(90°) : " << "A: (" << sq.A.x << "," << sq.A.y << "), "<< "C: (" << sq.C.x << "," << sq.C.y << ")" << std::endl;
+
+	//Draw
+	std::cout << "Appel de draw() :" << std::endl;
+	sq.draw();
+
+
+
+
+
+
+
+
+
 	// Initialisation de points supp
 	Point F(4,0);
 	Point G(0,3);
@@ -131,31 +161,6 @@ int main() {
 	assert((nt6.area()>0.49)&&(nt6.area()<0.51));
 	assert((nt7.area()>9.49)&&(nt7.area()<9.51));
 	std::cout<<"La fonction area() est OK" << std::endl;
-
-
-
-
-	// TEST SIMPLE DES FONCTIONS VOID DE SQUARE
-	Square sq(A, B);
-
-	std::cout << "- Etat initial -" << std::endl;
-	std::cout << "A: (" << sq.A.x << "," << sq.A.y << "), " << "C: (" << sq.C.x << "," << sq.C.y << ")" << std::endl;
-
-	//Translate
-	sq.translate(Point(2,3));
-	std::cout << "Après translate(2,3) : " << "A: (" << sq.A.x << "," << sq.A.y << "), " << "C: (" << sq.C.x << "," << sq.C.y << ")" << std::endl;
-
-	// Resize
-	sq.resize(2.0);
-	std::cout << "Après resize(2.0) : "<< "A: (" << sq.A.x << "," << sq.A.y << "), " << "C: (" << sq.C.x << "," << sq.C.y << ")" << std::endl;
-
-	// Rotate
-	sq.rotate(90); // rotation 90° autour du centre
-	std::cout << "Après rotate(90°) : " << "A: (" << sq.A.x << "," << sq.A.y << "), "<< "C: (" << sq.C.x << "," << sq.C.y << ")" << std::endl;
-
-	//Draw
-	std::cout << "Appel de draw() :" << std::endl;
-	sq.draw();
 
 
 
@@ -331,4 +336,8 @@ int main() {
 
 	return 0;
 }
+
+
+
+
 
