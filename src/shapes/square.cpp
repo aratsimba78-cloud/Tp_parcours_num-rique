@@ -58,7 +58,6 @@ sommets.push_back(A); //On ferme le carré
 //On appelle la fonction
 draw_picture(sommets);
 }
-// git add puis git commit a chaque fonction
 
 //Translation (on rajoute les coordonnes d'un point de translation)
 void Square::translate(Point T){
@@ -77,7 +76,7 @@ Point centre = center();
 A.x = centre.x + (A.x - centre.x) * ratio;
 A.y = centre.y + (A.y - centre.y) * ratio;
 
-//Déplacer le point 'C' par rapport au centre
+//Déplacer le point C par rapport au centre
 C.x = centre.x + (C.x - centre.x) * ratio;
 C.y = centre.y + (C.y - centre.y) * ratio;
 }
@@ -105,23 +104,16 @@ C.y = centre.y + (dx_c * sinA + dy_c * cosA);
 }
 
 
-	
+//Fonction equals (on regarde s'ils ont la même aire)	
 bool Square::equals(Square square) {
-double epsilon = 0.0001; // Marge d'erreur pour les doubles
+double epsilon = 0.0001; // Marge d'erreur pour les double
 
-// Comparaison des aires (Taille)
-// On utilise std::abs pour gérer les petites imprécisions de calcul
-bool memeAire = std::abs(area() - square.area()) < epsilon;
-
-// Comparaison des centres (Position)
-Point c1 = center();
-Point c2 = square.center();
-    
-bool memePosition = (abs(c1.x - c2.x) < epsilon) && (abs(c1.y - c2.y) < epsilon);
-//Le résultat est vrai seulement si les deux conditions sont réunies
-return memeAire && memePosition;
+// On utilise la valeur absolue abs pour gérer les petites imprécisions de calcul
+bool memeAire = abs(area() - square.area()) < epsilon;    
+return memeAire;
 }
 
+//Foncion pour dessiner un cercle dans un carré (son centre est le centre du carré, son rayon est le côté du carré divisé par 2)
 Circle Square::inscribedCircle() {
     return Circle( side() / 2.0,center());
 }
