@@ -4,7 +4,7 @@
 #include <vector>
 #include <cmath>
 #include <iostream>
-#inlude <cassert>
+#include <cassert>
 
 int main() {
 	
@@ -93,6 +93,36 @@ int main() {
 	std::cout << "La fonction inscribedCircle() est OK" << std::endl;
 	
 
+	// TEST SIMPLE DES FONCTIONS VOID DE SQUARE
+	Square sq(A, B);
+
+	std::cout << "- Etat initial -" << std::endl;
+	std::cout << "A: (" << sq.A.x << "," << sq.A.y << "), " << "C: (" << sq.C.x << "," << sq.C.y << ")" << std::endl;
+
+	//Translate
+	sq.translate(Point(2,3));
+	std::cout << "Après translate(2,3) : " << "A: (" << sq.A.x << "," << sq.A.y << "), " << "C: (" << sq.C.x << "," << sq.C.y << ")" << std::endl;
+
+	// Resize
+	sq.resize(2.0);
+	std::cout << "Après resize(2.0) : "<< "A: (" << sq.A.x << "," << sq.A.y << "), " << "C: (" << sq.C.x << "," << sq.C.y << ")" << std::endl;
+
+	// Rotate
+	sq.rotate(90); // rotation 90° autour du centre
+	std::cout << "Après rotate(90°) : " << "A: (" << sq.A.x << "," << sq.A.y << "), "<< "C: (" << sq.C.x << "," << sq.C.y << ")" << std::endl;
+
+	//Draw
+	std::cout << "Appel de draw() :" << std::endl;
+	sq.draw();
+
+
+
+
+
+
+
+
+
 	// Initialisation de points supp
 	Point F(4,0);
 	Point G(0,3);
@@ -145,7 +175,10 @@ int main() {
 	std::cout<<"La fonction area() est OK" << std::endl;
 
 
-	// ===== Tests center() Triangle =====
+
+
+
+	// Tests center() Triangle
 
 	Point ct1 = nt1.center();
 	assert((ct1.x > 1.32) && (ct1.x < 1.34));
@@ -182,7 +215,7 @@ int main() {
 
 	std::cout << "Test des booléens Triangle" << std::endl;
 
-	// ===== equals() =====
+	// equals()
 
 	Triangle nt1_copy(A,F,G);
 	Triangle nt1_reverse(F,G,A);
@@ -196,7 +229,7 @@ int main() {
 	std::cout << "La fonction equals() est OK" << std::endl;
 
 
-	// ===== isRightAngled() =====
+	// isRightAngled()
 
 	// nt1 : triangle 3-4-5 rectangle
 	assert(nt1.isRightAngled());
@@ -214,7 +247,7 @@ int main() {
 	std::cout << "La fonction isRightAngled() est OK" << std::endl;
 
 
-	// ===== isEquilateral() =====
+	// isEquilateral()
 	
 	// aucun de tes triangles existants n'est équilatéral
 	assert(!nt1.isEquilateral());
@@ -228,7 +261,7 @@ int main() {
 	std::cout << "La fonction isEquilateral() est OK" << std::endl;
 
 
-	// ===== isIsoceles() =====
+	// isIsoceles()
 
 	// nt2 : HI = HJ
 	assert(nt2.isIsoceles());
@@ -254,7 +287,7 @@ int main() {
 
 	std::cout << "Test du Circle" << std::endl;
 
-	// ===== Points de test (sans conflit avec A, B, C) =====
+	//Points de test
 
 	Point V(0,0);
 	Point W(1,0);
@@ -262,51 +295,50 @@ int main() {
 	Point Y(2,2);
 	Point Z(-1,3);
 
-	// ===== Cercles =====
+	//Cercles
+	Circle cl1(1, V);   // rayon 1, centre origine
+	Circle cl2(2, V);   // même centre, rayon différent
+	Circle cl3(1, W);   // même rayon, centre différent
+	Circle cl4(1, V);   // identique à cl1
 
-	Circle c1(1, V);   // rayon 1, centre origine
-	Circle c2(2, V);   // même centre, rayon différent
-	Circle c3(1, W);   // même rayon, centre différent
-	Circle c4(1, V);   // identique à c1
-
-	// ===== area() =====
-
-	assert(c1.area() > 3.13 && c1.area() < 3.15);
-	assert(c2.area() > 12.56 && c2.area() < 12.58);
+	//area()
+	assert(cl1.area() > 3.13 && cl1.area() < 3.15);
+	assert(cl2.area() > 12.56 && cl2.area() < 12.58);
 
 	std::cout << "area() OK" << std::endl;
 
-	// ===== circumference() =====
 
-	assert(c1.circumference() > 6.27 && c1.circumference() < 6.29);
-	assert(c2.circumference() > 12.56 && c2.circumference() < 12.58);
+	// circumference()
+
+	assert(cl1.circumference() > 6.27 && cl1.circumference() < 6.29);
+	assert(cl2.circumference() > 12.56 && cl2.circumference() < 12.58);
 
 	std::cout << "circumference() OK" << std::endl;
 
-	// ===== equals() =====
-
-	assert(c1.equals(c4));   // mêmes paramètres
-	assert(!c1.equals(c2));  // rayon différent
-	assert(!c1.equals(c3));  // centre différent
+	// equals()
+	assert(cl1.equals(cl4));   // mêmes paramètres
+	assert(!cl1.equals(cl2));  // rayon différent
+	assert(!cl1.equals(cl3));  // centre différent
 
 	std::cout << "equals() OK" << std::endl;
 
-	// ===== translate() =====
 
-	c1.translate(Point(2,3));
+	//translate()
 
-	assert(c1.center.x > 1.99 && c1.center.x < 2.01);
-	assert(c1.center.y > 2.99 && c1.center.y < 3.01);
+	cl1.translate(Point(2,3));
+
+	assert(cl1.center.x > 1.99 && cl1.center.x < 2.01);
+	assert(cl1.center.y > 2.99 && cl1.center.y < 3.01);
 
 	std::cout << "translate() OK" << std::endl;
 
-	// ===== resize() =====
+	//resize()
 
-	double old_r = c2.radius;
+	double old_r = cl2.radius;
 
-	c2.resize(0.5);
+	cl2.resize(0.5);
 
-	assert(c2.radius > old_r * 0.49 && c2.radius < old_r * 0.51);
+	assert(cl2.radius > old_r * 0.49 && cl2.radius < old_r * 0.51);
 
 	std::cout << "resize() OK" << std::endl;
 
@@ -316,3 +348,8 @@ int main() {
 
 	return 0;
 }
+
+
+
+
+
