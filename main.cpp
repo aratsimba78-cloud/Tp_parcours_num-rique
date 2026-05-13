@@ -284,49 +284,49 @@ int main() {
 	Point Z(-1,3);
 
 	//Cercles
-	Circle c1(1, V);   // rayon 1, centre origine
-	Circle c2(2, V);   // même centre, rayon différent
-	Circle c3(1, W);   // même rayon, centre différent
-	Circle c4(1, V);   // identique à c1
+	Circle cl1(1, V);   // rayon 1, centre origine
+	Circle cl2(2, V);   // même centre, rayon différent
+	Circle cl3(1, W);   // même rayon, centre différent
+	Circle cl4(1, V);   // identique à c1
 
 	//area()
-	assert(c1.area() > 3.13 && c1.area() < 3.15);
-	assert(c2.area() > 12.56 && c2.area() < 12.58);
+	assert(cl1.area() > 3.13 && cl1.area() < 3.15);
+	assert(cl2.area() > 12.56 && cl2.area() < 12.58);
 
 	std::cout << "area() OK" << std::endl;
 
 
 	// circumference()
 
-	assert(c1.circumference() > 6.27 && c1.circumference() < 6.29);
-	assert(c2.circumference() > 12.56 && c2.circumference() < 12.58);
+	assert(cl1.circumference() > 6.27 && cl1.circumference() < 6.29);
+	assert(cl2.circumference() > 12.56 && cl2.circumference() < 12.58);
 
 	std::cout << "circumference() OK" << std::endl;
 
 	// equals()
-	assert(c1.equals(c4));   // mêmes paramètres
-	assert(!c1.equals(c2));  // rayon différent
-	assert(!c1.equals(c3));  // centre différent
+	assert(cl1.equals(c4));   // mêmes paramètres
+	assert(!cl1.equals(c2));  // rayon différent
+	assert(!cl1.equals(c3));  // centre différent
 
 	std::cout << "equals() OK" << std::endl;
 
 
 	//translate()
 
-	c1.translate(Point(2,3));
+	cl1.translate(Point(2,3));
 
-	assert(c1.center.x > 1.99 && c1.center.x < 2.01);
-	assert(c1.center.y > 2.99 && c1.center.y < 3.01);
+	assert(cl1.center.x > 1.99 && cl1.center.x < 2.01);
+	assert(cl1.center.y > 2.99 && cl1.center.y < 3.01);
 
 	std::cout << "translate() OK" << std::endl;
 
 	//resize()
 
-	double old_r = c2.radius;
+	double old_r = cl2.radius;
 
-	c2.resize(0.5);
+	cl2.resize(0.5);
 
-	assert(c2.radius > old_r * 0.49 && c2.radius < old_r * 0.51);
+	assert(cl2.radius > old_r * 0.49 && cl2.radius < old_r * 0.51);
 
 	std::cout << "resize() OK" << std::endl;
 
