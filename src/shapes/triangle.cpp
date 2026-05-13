@@ -81,3 +81,24 @@ bool Triangle::equals(Triangle triangle){
 		B.x == triangle.B.x && B.y == triangle.B.y &&
 		C.x == triangle.C.x && C.y == triangle.C.y;
 }
+
+bool Triangle::isRightAngled(){
+	double ab = sqrt((B.x - A.x)*(B.x - A.x) + (B.y - A.y)*(B.y - A.y));
+	double bc = sqrt((C.x - B.x)*(C.x - B.x) + (C.y - B.y)*(C.y - B.y));
+	double ca = sqrt((A.x - C.x)*(A.x - C.x) + (A.y - C.y)*(A.y - C.y));
+	double ab2 = ab*ab;
+	double bc2 = bc*bc;
+	double ca2 = ca*ca;
+	
+	double eps = 0.0001;
+	return ab2 + bc2 - ca2 < eps || ab2 + ca2 - bc2 < eps || bc2 + ca2 - ab2 < eps;
+}
+
+bool Triangle::isEquilateral(){
+	double ab = sqrt((B.x - A.x)*(B.x - A.x) + (B.y - A.y)*(B.y - A.y));
+	double bc = sqrt((C.x - B.x)*(C.x - B.x) + (C.y - B.y)*(C.y - B.y));
+	double ca = sqrt((A.x - C.x)*(A.x - C.x) + (A.y - C.y)*(A.y - C.y));
+	
+	double eps = 0.0001;
+	return fabs(ab - bc) < eps && fabs(bc - ca) < eps;
+}
