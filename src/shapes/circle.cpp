@@ -50,3 +50,7 @@ void Circle::translate(Point T) {
 void Circle::resize(double ratio) {
 	radius *= ratio;
 }
+
+bool Circle::equals(Circle circle) {
+	return radius == circle.radius and center.x == circle.center.x and center.y == circle.center.y;
+}
