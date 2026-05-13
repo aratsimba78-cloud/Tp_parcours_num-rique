@@ -28,3 +28,30 @@ Point Triangle::center(){
 	
 	return Grav;
 }
+
+void Triangle::draw(){
+	std::vector<Point> points = {A,B,C,A};
+
+    draw_picture(points);
+}
+
+void Triangle::translate(Point T){
+	A.x += T.x;
+	A.y += T.y;
+	
+	B.x += T.x;
+	B.y += T.y;
+	
+	C.x += T.x;
+	C.y += T.y;
+}
+
+void Triangle::resize(double ratio){
+	Point G = center();
+	A.x = G.x + ratio*(A.x - G.x);
+	A.y = G.y + ratio*(A.y - G.y);
+	B.x = G.x + ratio*(B.x - G.x);
+	B.y = G.y + ratio*(B.y - G.y);
+	C.x = G.x + ratio*(C.x - G.x);
+	C.y = G.y + ratio*(C.y - G.y);
+}
