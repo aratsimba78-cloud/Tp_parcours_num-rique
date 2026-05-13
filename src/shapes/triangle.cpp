@@ -111,3 +111,21 @@ bool Triangle::isIsoceles(){
 	double eps = 0.0001;
 	return fabs(ab - bc) < eps || fabs(bc - ca) < eps || fabs(ab - ca) < eps;
 }
+
+Circle Triangle::inscribedCircle(){
+	Point G = center();
+	double rayon = (area()/(perimeter()/2.0));
+	Circle C(rayon, G);
+	return C;
+}
+
+Circle Triangle::circumscribedCircle(){
+	Point G = center();
+	double ab = TriangleSide(A,B);
+	double bc = TriangleSide(B,C);
+	double ca = TriangleSide(C,A);
+	
+	double rayon = ((ab*bc*ca)/4.0*area());
+	Circle C(rayon, G);
+	return C;
+}
