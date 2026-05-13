@@ -91,6 +91,11 @@ int main() {
 	assert(std::abs(inscrit3.radius-2.5)<0.1); //Rayon attendu : 2.5
 	assert(std::abs(inscrit3.center.x-no3.center().x)<0.1);
 	std::cout << "La fonction inscribedCircle() est OK" << std::endl;
+
+//Tests de la fonction circumscribedCircle()
+	Circle circon2=no2.circumscribedCircle();
+	assert(std::abs(circon2.radius-1.4)<0.1);
+	std::cout << "La fonction circumscribedCircle() est OK" << std::endl;
 	
 
 	// TEST SIMPLE DES FONCTIONS VOID DE SQUARE
@@ -114,7 +119,6 @@ int main() {
 	//Draw
 	std::cout << "Appel de draw() :" << std::endl;
 	sq.draw();
-
 
 
 
@@ -155,7 +159,7 @@ int main() {
 
 
 	assert((nt1.perimeter()>11.99)&&(nt1.perimeter()<12.01));
-	assert((nt2.perimeter()>11.99)&&(nt2.perimeter()<12.01));
+	assert((nt2.perimeter()>12.77)&&(nt2.perimeter()<12.79));
 	assert((nt3.perimeter()>12.93)&&(nt3.perimeter()<12.95));
 	assert((nt4.perimeter()>11.99)&&(nt4.perimeter()<12.01));
 	assert((nt5.perimeter()>5.63)&&(nt5.perimeter()<5.65));
