@@ -80,6 +80,18 @@ int main() {
 	assert(!no1.equals(no3));
 	std::cout << "La fonction equals() est OK" << std::endl;
 
+//Tests de la fonction inscribedCircle()
+	Circle inscrit1= no1.inscribedCircle();
+	Circle inscrit2= no2.inscribedCircle();
+	Circle inscrit3= no3.inscribedCircle();
+	assert(std::abs(inscrit1.radius-3.5)<0.1); //Rayon attendu : 3.5
+	assert(std::abs(inscrit1.center.x-no1.center().x)<0.1);
+	assert(std::abs(inscrit2.radius-1.0)<0.1); //Rayon attendu : 1.0
+	assert(std::abs(inscrit2.center.x-no2.center().x)<0.1);
+	assert(std::abs(inscrit3.radius-2.5)<0.1); //Rayon attendu : 2.5
+	assert(std::abs(inscrit3.center.x-no3.center().x)<0.1);
+	std::cout << "La fonction inscribedCircle() est OK" << std::endl;
+	
 
 	// Initialisation de points supp
 	Point F(4,0);
