@@ -102,3 +102,12 @@ bool Triangle::isEquilateral(){
 	double eps = 0.0001;
 	return fabs(ab - bc) < eps && fabs(bc - ca) < eps;
 }
+
+bool Triangle::isIsoceles(){
+	double ab = sqrt((B.x - A.x)*(B.x - A.x) + (B.y - A.y)*(B.y - A.y));
+	double bc = sqrt((C.x - B.x)*(C.x - B.x) + (C.y - B.y)*(C.y - B.y));
+	double ca = sqrt((A.x - C.x)*(A.x - C.x) + (A.y - C.y)*(A.y - C.y));
+	
+	double eps = 0.0001;
+	return fabs(ab - bc) < eps || fabs(bc - ca) < eps || fabs(ab - ca) < eps;
+}
