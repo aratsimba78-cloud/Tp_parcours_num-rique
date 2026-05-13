@@ -55,3 +55,29 @@ void Triangle::resize(double ratio){
 	C.x = G.x + ratio*(C.x - G.x);
 	C.y = G.y + ratio*(C.y - G.y);
 }
+
+void Triangle::rotate(double angle){
+	Point G = center();
+	double cosA = cos(angle);
+	double sinA = sin(angle);
+	std::vector<Point> points = {A,B,C};
+	for (int i = 0; i < points.size(); i++){
+		double x = points.at(i).x - G.x;
+		double y = points.at(i).y - G.y;
+		// Calcul de la rotation relative
+		double X = x * cosA - y * sinA;
+		double Y = x * sinA + y * cosA;
+		// Mise à jour des coordonnées dans le vecteur
+		points.at(i).x = G.x + X;
+		points.at(i).y = G.y + Y;
+	}
+	A = points.at(0);
+	B = points.at(1);
+	C = points.at(2);
+}
+
+bool Triangle::equals(Triangle triangle){
+	return A.x == triangle.A.x && A.y == triangle.A.y &&
+		B.x == triangle.B.x && B.y == triangle.B.y &&
+		C.x == triangle.C.x && C.y == triangle.C.y;
+}
