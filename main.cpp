@@ -287,7 +287,7 @@ int main() {
 	Circle cl1(1, V);   // rayon 1, centre origine
 	Circle cl2(2, V);   // même centre, rayon différent
 	Circle cl3(1, W);   // même rayon, centre différent
-	Circle cl4(1, V);   // identique à c1
+	Circle cl4(1, V);   // identique à cl1
 
 	//area()
 	assert(cl1.area() > 3.13 && cl1.area() < 3.15);
@@ -304,9 +304,9 @@ int main() {
 	std::cout << "circumference() OK" << std::endl;
 
 	// equals()
-	assert(cl1.equals(c4));   // mêmes paramètres
-	assert(!cl1.equals(c2));  // rayon différent
-	assert(!cl1.equals(c3));  // centre différent
+	assert(cl1.equals(cl4));   // mêmes paramètres
+	assert(!cl1.equals(cl2));  // rayon différent
+	assert(!cl1.equals(cl3));  // centre différent
 
 	std::cout << "equals() OK" << std::endl;
 
