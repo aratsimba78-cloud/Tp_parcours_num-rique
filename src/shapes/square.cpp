@@ -70,16 +70,16 @@ void Square::translate(Point T){
 
 //Fonction resize
 void Square::resize(double ratio) {
-    //Trouver le centre (il ne doit pas bouger)
-    Point centre = center();
+//Trouver le centre (il ne doit pas bouger)
+Point centre = center();
 
-    //Déplacer le point A par rapport au centre
-    A.x = centre.x + (A.x - centre.x) * ratio;
-    A.y = centre.y + (A.y - centre.y) * ratio;
+//Déplacer le point A par rapport au centre
+A.x = centre.x + (A.x - centre.x) * ratio;
+A.y = centre.y + (A.y - centre.y) * ratio;
 
-    // ÉTAPE 3 : Déplacer le point 'c' par rapport au centre
-    C.x = centre.x + (C.x - centre.x) * ratio;
-    C.y = centre.y + (C.y - centre.y) * ratio;
+//Déplacer le point 'C' par rapport au centre
+C.x = centre.x + (C.x - centre.x) * ratio;
+C.y = centre.y + (C.y - centre.y) * ratio;
 }
 	
 void Square::rotate(double angle) {
@@ -104,8 +104,33 @@ C.x = centre.x + (dx_c * cosA - dy_c * sinA);
 C.y = centre.y + (dx_c * sinA + dy_c * cosA);
 }
 
+
 	
-	
+bool Square::equals(Square square) {
+double epsilon = 0.0001; // Marge d'erreur pour les doubles
+
+// Comparaison des aires (Taille)
+// On utilise std::abs pour gérer les petites imprécisions de calcul
+bool memeAire = std::abs(area() - square.area()) < epsilon;
+
+// Comparaison des centres (Position)
+Point c1 = center();
+Point c2 = square.center();
+    
+bool memePosition = (abs(c1.x - c2.x) < epsilon) && (abs(c1.y - c2.y) < epsilon);
+//Le résultat est vrai seulement si les deux conditions sont réunies
+return memeAire && memePosition;
+}
+
+Circle Square::inscribedCircle() {
+    return Circle( side() / 2.0,center());
+}
+
+//Cercle circonscrit (Rayon = demi-diagonale)
+Circle Square::circumscribedCircle() {
+    double diag = sqrt(pow(C.x - A.x, 2) + pow(C.y - A.y, 2));
+    return Circle( diag / 2.0, center());
+}
 	
 	
 	
