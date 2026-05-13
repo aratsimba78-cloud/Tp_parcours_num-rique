@@ -19,29 +19,29 @@ Les fichiers .hpp contiennent les déclarations :
 
 Ils décrivent la structure du programme sans contenir l'implémentation complète.
 
-Les fichiers concernés (les énumérer et dire rapidement ce qu'ils font) :
-
-
+Les fichiers concernés : shapes.hpp, point.hpp, draw.hpp, CTurtle.hpp, Clmg.h, circle.hpp, square.hpp, triangle.hpp
 
 Les fichiers .cpp contiennent l'implémentation du programme.
 Ils définissent le comportement des fonctions et des classes déclarées dans les fichiers .hpp.
-Les fichiers ( donner le nom des fichiers cpp et dire précisement quels fichiers .hpp sont implémentés) :
-
-
+Les fichiers concernés : draw.cpp, point.cpp, circle.cpp, square.cpp, triangle.cpp.
 
 
 Le fichier main.cpp contient la fonction principale main().
 C'est la où se fait l'éxecution du programme.
 C'est également là où les tests de chaque fonction correspondant au carré, au cercle et au triangle sont effectués.
 
---------------------------------------------------
-Compilation:
---------------------------------------------------
-
-g++ -std=c++23 -Iinclude -o main src/*.cpp src/shapes/*.cpp main.cpp -lgdi32 -luser32
-
 
 --------------------------------------------------
 Consignes:
 --------------------------------------------------
+Compiler  avec :
 
+g++ -std=c++23 -Iinclude -o main src/*.cpp src/shapes/*.cpp main.cpp -lgdi32 -luser32
+
+Exécuter avec :
+
+./main.exe
+
+Pour exécuter les différentes fonctions :
+
+ajouter le code à exécuter à la fin du main()
