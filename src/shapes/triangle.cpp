@@ -4,18 +4,23 @@
 
 Triangle::Triangle(Point P, Point Q, Point R) : A(P), B(Q), C(R) {}
 
-double Triangle::perimeter(){
+double TriangleSide(Point A, Point B){
 	double ab = sqrt((B.x - A.x)*(B.x - A.x) + (B.y - A.y)*(B.y - A.y));
-	double bc = sqrt((C.x - B.x)*(C.x - B.x) + (C.y - B.y)*(C.y - B.y));
-	double ca = sqrt((A.x - C.x)*(A.x - C.x) + (A.y - C.y)*(A.y - C.y));
+	return ab;
+}
+
+double Triangle::perimeter(){
+	double ab = TriangleSide(A,B);
+	double bc = TriangleSide(B,C);
+	double ca = TriangleSide(C,A);
 	
 	return ab+bc+ca;
 }
 
 double Triangle::area(){
-	double ab = sqrt((B.x - A.x)*(B.x - A.x) + (B.y - A.y)*(B.y - A.y));
-	double bc = sqrt((C.x - B.x)*(C.x - B.x) + (C.y - B.y)*(C.y - B.y));
-	double ca = sqrt((A.x - C.x)*(A.x - C.x) + (A.y - C.y)*(A.y - C.y));
+	double ab = TriangleSide(A,B);
+	double bc = TriangleSide(B,C);
+	double ca = TriangleSide(C,A);
 	double demiperim = perimeter()/2.0;
 	return sqrt(demiperim * (demiperim - ab) * (demiperim - bc) * (demiperim - ca));
 	
@@ -83,9 +88,9 @@ bool Triangle::equals(Triangle triangle){
 }
 
 bool Triangle::isRightAngled(){
-	double ab = sqrt((B.x - A.x)*(B.x - A.x) + (B.y - A.y)*(B.y - A.y));
-	double bc = sqrt((C.x - B.x)*(C.x - B.x) + (C.y - B.y)*(C.y - B.y));
-	double ca = sqrt((A.x - C.x)*(A.x - C.x) + (A.y - C.y)*(A.y - C.y));
+	double ab = TriangleSide(A,B);
+	double bc = TriangleSide(B,C);
+	double ca = TriangleSide(C,A);
 	double ab2 = ab*ab;
 	double bc2 = bc*bc;
 	double ca2 = ca*ca;
@@ -95,18 +100,18 @@ bool Triangle::isRightAngled(){
 }
 
 bool Triangle::isEquilateral(){
-	double ab = sqrt((B.x - A.x)*(B.x - A.x) + (B.y - A.y)*(B.y - A.y));
-	double bc = sqrt((C.x - B.x)*(C.x - B.x) + (C.y - B.y)*(C.y - B.y));
-	double ca = sqrt((A.x - C.x)*(A.x - C.x) + (A.y - C.y)*(A.y - C.y));
+	double ab = TriangleSide(A,B);
+	double bc = TriangleSide(B,C);
+	double ca = TriangleSide(C,A);
 	
 	double eps = 0.0001;
 	return fabs(ab - bc) < eps && fabs(bc - ca) < eps;
 }
 
 bool Triangle::isIsoceles(){
-	double ab = sqrt((B.x - A.x)*(B.x - A.x) + (B.y - A.y)*(B.y - A.y));
-	double bc = sqrt((C.x - B.x)*(C.x - B.x) + (C.y - B.y)*(C.y - B.y));
-	double ca = sqrt((A.x - C.x)*(A.x - C.x) + (A.y - C.y)*(A.y - C.y));
+	double ab = TriangleSide(A,B);
+	double bc = TriangleSide(B,C);
+	double ca = TriangleSide(C,A);
 	
 	double eps = 0.0001;
 	return fabs(ab - bc) < eps || fabs(bc - ca) < eps || fabs(ab - ca) < eps;
